@@ -35,7 +35,7 @@ const Layout = () => {
 							<Single />
 						</Route>
 
-						<Route exact path="/SingleCharacterView/">
+						<Route exact path="/SingleCharacterView/:theid">
 							<SingleCharacterView />
 						</Route>
 

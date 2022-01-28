@@ -1,50 +1,44 @@
-import React, { useEffect, useState}from "react";
+import React, { useEffect, useState, useContext}from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 
+
+
+
 const CharSection = props => {
     
-    useEffect(() => {
-		getFromOnline();
-	},[]);
-
-    let [charList, setCharList] = useState([]);
+const { store } = useContext(Context);
+   
+    //console.log(store.people);
   
-
-    function getFromOnline() {
-		fetch("https://www.swapi.tech/api/people/", {
-			method: "GET",
-			headers: { "Content-Type": "application/json" },
-		})
-			.then((resp) => {
-			    return resp.json();
-            })
-			.then((data) => {
-				 return data;
-                //setCharList(data);
-			})
-            .then((datablock) => {
-                //console.log(datablock.results[0].name)
-                //console.log(datablock.results.length)
-                setCharList(datablock.results)
-            })
-                
-    }
-    
-    console.log(charList)
-
-    return charList.map((i) => (
+    return store.people.map((i, name, uid, url) => (
         <>
-            <div>
-                teste
-            </div>
+            <div className="card col-2 border border-warning bg-dark p-0 mt-3 mb-3 ms-1 me-1">
+            <h5 className="card-title bg-warning text-dark p-2 m-0">{i.name}</h5>
+                <img src={"https://starwars-visualguide.com/assets/img/characters/"+ i.uid + ".jpg"} className="card-img-top g-0 m-0 p-0" alt="..." ></img>
+                <div className="card-body ">
+                    
+                    <div className="d-flex justify-content-between">
+                        <Link to={"/SingleCharacterView/" + i.uid}>
+                            <button className="btn btn-warning">Read more</button>
+                        </Link>
+                        <Link to="">
+                            <button className="btn btn-warning">+</button>
+                        </Link>
+                    </div>
+                </div>
+            </div> 
+           
         </>
-    ));
-
+    )
+    );
 }
 
+    
+
+    
 
     
     
