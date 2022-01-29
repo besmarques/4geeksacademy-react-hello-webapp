@@ -5,34 +5,28 @@ import { Context } from "../store/appContext";
 import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 
 
-
-
 const CharSection = props => {
     
-const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
    
-    //console.log(store.people);
-  
     return store.people.map((i, name, uid, url) => (
         <>
             <div className="card col-2 border border-warning bg-dark p-0 mt-3 mb-3 ms-1 me-1">
-            <h5 className="card-title bg-warning text-dark p-2 m-0">{i.name}</h5>
-                <img src={"https://starwars-visualguide.com/assets/img/characters/"+ i.uid + ".jpg"} className="card-img-top g-0 m-0 p-0" alt="..." ></img>
-                <div className="card-body ">
-                    
-                    <div className="d-flex justify-content-between">
-                        <Link to={"/SingleCharacterView/" + i.uid} state={i.uid}>
-                            <button className="btn btn-warning">Read more</button>
-                        </Link>
-                        <Link to="">
-                            <button className="btn btn-warning">+</button>
-                        </Link>
+                <h5 className="card-title bg-warning text-dark p-2 m-0">{i.name}</h5>
+                    <img src={"https://starwars-visualguide.com/assets/img/characters/"+ i.uid + ".jpg"} className="card-img-top g-0 m-0 p-0" alt="..." ></img>
+                    <div className="card-body ">
+                        <div className="d-flex justify-content-between">
+                            <Link to={"/SingleCharacterView/" + i.uid} >
+                                <button className="btn btn-warning" onClick={() => actions.getPerson(i.uid)}>Read more</button>
+                            </Link>
+                            <Link to="">
+                                <button className="btn btn-warning">+</button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
             </div> 
-           
         </>
-    )
+        )
     );
 }
 

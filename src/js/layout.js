@@ -12,6 +12,7 @@ import { Footer } from "./component/footer";
 
 import SingleCharacterView from "./views/charactersSingle.jsx";
 import SingleVehicleView from "./views/vehicleSingle.jsx";
+import SinglePlanetView from "./views/planetSingle.jsx";
 
 //create your first component
 const Layout = () => {
@@ -39,8 +40,12 @@ const Layout = () => {
 							<SingleCharacterView />
 						</Route>
 
-						<Route exact path="/SingleVehicleView/">
+						<Route exact path="/SingleVehicleView/:theid">
 							<SingleVehicleView />
+						</Route>
+
+						<Route exact path="/SinglePlanetView/:theid">
+							<SinglePlanetView />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

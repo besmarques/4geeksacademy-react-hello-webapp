@@ -19,6 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles:[],
 			planets:[],
 			person:[],
+			singleVehicle:[],
+			singlePlanet:[]
 
 		},
 		actions: {
@@ -65,9 +67,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				   
 			},
-			getPerson: () => {
+			getPerson: (uid) => {
 				const store = getStore();
-				fetch("https://www.swapi.tech/api/people/", {
+				console.log("uid on flux" , uid)
+
+				fetch("https://www.swapi.tech/api/people/" + uid, {
 					method: "GET",
 					headers: { "Content-Type": "application/json" },
 				})
@@ -101,6 +105,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({vehicles : dataGathered});
 					})
 			},
+
+			getSingleVehicle: (uid) => {
+				const store = getStore();
+				console.log("uid on flux" , uid)
+
+				fetch("https://www.swapi.tech/api/vehicles/" + uid, {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+				})
+					.then((resp) => {
+						return resp.json();
+					})
+					.then(data => {
+						//return data;
+						let dataGathered = data.result.properties;
+
+						setStore({singleVehicle : dataGathered});
+					})
+				   
+			},
+
 			getPlanets: () => {
 				const store = getStore();
 				fetch("https://www.swapi.tech/api/planets/", {
@@ -118,7 +143,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						setStore({planets : dataGathered});
 					})
-			}
+			},
+
+			getSinglePlanet: (uid) => {
+				const store = getStore();
+				console.log("uid on flux" , uid)
+
+				fetch("https://www.swapi.tech/api/planets/" + uid, {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+				})
+					.then((resp) => {
+						return resp.json();
+					})
+					.then(data => {
+						//return data;
+						let dataGathered = data.result.properties;
+
+						setStore({singlePlanet : dataGathered});
+					})
+				   
+			},
 
 		}
 	};

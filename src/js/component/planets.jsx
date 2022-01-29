@@ -9,7 +9,7 @@ import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 
 const PlanetsSection = props => {
 
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
     return store.planets.map((i, name, uid, url) => (
         <>
@@ -22,7 +22,7 @@ const PlanetsSection = props => {
                         
                         <div className="d-flex justify-content-between">
                             <Link to={"/SinglePlanetView/" + i.uid}>
-                                <button className="btn btn-primary">Read more</button>
+                                <button className="btn btn-primary" onClick={() => actions.getSinglePlanet(i.uid)}>Read more</button>
                             </Link>
                             <Link to="">
                                 <button className="btn btn-primary">+</button>
