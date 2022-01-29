@@ -21,7 +21,7 @@ const { store } = useContext(Context);
                 <div className="card-body ">
                     
                     <div className="d-flex justify-content-between">
-                        <Link to={"/SingleCharacterView/" + i.uid}>
+                        <Link to={"/SingleCharacterView/" + i.uid} state={i.uid}>
                             <button className="btn btn-warning">Read more</button>
                         </Link>
                         <Link to="">

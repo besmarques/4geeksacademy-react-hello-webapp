@@ -1,3 +1,5 @@
+import { useParams } from "react-router";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -15,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			people:[],
 			vehicles:[],
-			planets:[]
+			planets:[],
+			person:[],
 
 		},
 		actions: {
@@ -45,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getPeople: () => {
 				const store = getStore();
-				fetch("https://www.swapi.tech/api/people/", {
+				fetch("https://www.swapi.tech/api/people/" , {
 					method: "GET",
 					headers: { "Content-Type": "application/json" },
 				})
@@ -62,6 +65,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				   
 			},
+			getPerson: () => {
+				const store = getStore();
+				fetch("https://www.swapi.tech/api/people/", {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+				})
+					.then((resp) => {
+						return resp.json();
+					})
+					.then(data => {
+						//return data;
+						let dataGathered = data.result.properties;
+
+						setStore({person : dataGathered});
+					})
+				   
+			},
+			
 			getVehicles: () => {
 				const store = getStore();
 				fetch("https://www.swapi.tech/api/vehicles/", {
