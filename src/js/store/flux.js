@@ -13,12 +13,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			people:[
-				/*{
-					name: "teste",
-				}*/
-
-			]
+			people:[],
+			vehicles:[],
+			planets:[]
 
 		},
 		actions: {
@@ -64,6 +61,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({people : dataGathered});
 					})
 				   
+			},
+			getVehicles: () => {
+				const store = getStore();
+				fetch("https://www.swapi.tech/api/vehicles/", {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+				})
+					.then((resp) => {
+						return resp.json();
+					})
+					.then(data => {
+						//return data;
+						let dataGathered = data.results.map((item,index) => {
+							return {...item,index:index};
+						}); 
+
+						setStore({vehicles : dataGathered});
+					})
+			},
+			getPlanets: () => {
+				const store = getStore();
+				fetch("https://www.swapi.tech/api/planets/", {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+				})
+					.then((resp) => {
+						return resp.json();
+					})
+					.then(data => {
+						//return data;
+						let dataGathered = data.results.map((item,index) => {
+							return {...item,index:index};
+						}); 
+
+						setStore({planets : dataGathered});
+					})
 			}
 
 		}
