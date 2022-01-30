@@ -1,6 +1,9 @@
 import { useParams } from "react-router";
 
 const getState = ({ getStore, getActions, setStore }) => {
+	
+	
+
 	return {
 		store: {
 			demo: [
@@ -20,8 +23,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets:[],
 			person:[],
 			singleVehicle:[],
-			singlePlanet:[]
-
+			singlePlanet:[],
+			favorites:[],
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -165,8 +168,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 				   
 			},
 
+			addToFavorites: ( uid, url, name) => {
+				const store = getStore();
+
+				let temp = store.favorites;
+
+				temp.push({"uid":uid, "url":url, "name":name})
+
+				setStore({favorites : temp});
+
+				console.log(store.favorites)
+
+				//getActions().addToFavCounter(1);
+
+			},
+			
+			removeFromFavorites: (i) => {
+
+				const store = getStore();
+
+				let temp = store.favorites;
+
+				temp.splice(i, 1);
+
+				setStore({favCounter : temp});
+
+			}
+		
+
+
+
 		}
 	};
+
+	
 };
 
 export default getState;

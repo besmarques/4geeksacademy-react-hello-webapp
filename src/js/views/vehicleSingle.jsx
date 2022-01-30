@@ -6,8 +6,12 @@ import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 
 const SingleVehicleView = props => {
 
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
 	const params = useParams();
+
+    useEffect(() => {
+        actions.getSingleVehicle(params.theid)
+    }, []);
 
     return (
     <>
@@ -30,7 +34,7 @@ const SingleVehicleView = props => {
                     <div className="fs-5 ms-5 text-light">Passengers: {store.singleVehicle.passengers}</div>
                     <div className="fs-5 ms-5 text-light">Consumables: {store.singleVehicle.consumables}</div>
                     <Link to="/">
-                        <button className="fs-5 ms-5 mt-5 text-light btn btn-danger">Home</button>
+                        <button className="fs-5 ms-5 mt-5 text-light btn btn-danger">Return Home</button>
                     </Link>
                 </div>
             </div>

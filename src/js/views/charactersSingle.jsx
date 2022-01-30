@@ -5,9 +5,13 @@ import { Context } from "../store/appContext";
 import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 
 const SingleCharacterView = props => {
-    
-    const { store } = useContext(Context);
+
+    const { store, actions } = useContext(Context);
 	const params = useParams();
+
+    useEffect(() => {
+        actions.getPerson(params.theid)
+    }, []);
 
     return (
     <>
@@ -28,7 +32,7 @@ const SingleCharacterView = props => {
                     <div className="fs-5 ms-5 text-light">Skin Color: {store.person.skin_color} </div>
                     <div className="fs-5 ms-5 text-light">Homeworld: </div>
                     <Link to="/">
-                        <button className="fs-5 ms-5 mt-5 text-dark btn btn-warning">Home</button>
+                        <button className="fs-5 ms-5 mt-5 text-dark btn btn-warning">Return Home</button>
                     </Link>
                 </div>
             </div>

@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState, useContext}from "react";
 import { Link } from "react-router-dom";
+import FavoritesInside from "./favorites.jsx";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	
+	const { store, actions } = useContext(Context);
+	
 	return (
 		<div className="container-fluid bg-dark bg-dark pt-3 pb-3 border-bottom border-light">
 		<nav className="container navbar navbar-dark ">
@@ -9,16 +14,16 @@ export const Navbar = () => {
 				<img src="https://logosmarcas.net/wp-content/uploads/2020/11/Star-Wars-Emblema.png" className="logo"/>
 			</Link>
 			<div className="ml-auto">
-				<Link to="">
+				
 					<div class="dropdown">
-						<button class="btn dropdown-toggle" type="button" id="favoritesBtn" data-bs-toggle="dropdown" aria-expanded="false">
-							Dropdown button
+						<button class="btn dropdown-toggle d-flex" type="button" id="favoritesBtn" data-bs-toggle="dropdown" aria-expanded="false">
+							<div className="col-11">Favorites</div><div className="col-1">{store.favorites.length}</div> 
 						</button>
-						<ul class="dropdown-menu" aria-labelledby="favoritesBtn">
-							<li><a class="dropdown-item" href="#">teste</a></li>
+						<ul className="dropdown-menu col-12" aria-labelledby="favoritesBtn">
+							<FavoritesInside />
 						</ul>
 					</div>
-				</Link>
+				
 			</div>
 		</nav>
 		</div>

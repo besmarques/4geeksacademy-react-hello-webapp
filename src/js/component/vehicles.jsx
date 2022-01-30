@@ -13,17 +13,15 @@ const VehicleSection = props => {
         <>
             <div className="card col-3 border border-danger bg-dark p-0 mt-3 mb-3 ms-1 me-1">
                 <h5 className="card-title bg-danger text-light p-2 m-0">{i.name}</h5>
-                    <img src={"https://starwars-visualguide.com/assets/img/vehicles/"+ i.uid + ".jpg"} className="card-img-top g-0 m-0 p-0" alt="..." ></img>
-                    <div className="card-body ">
-                        <div className="d-flex justify-content-between">
-                            <Link to={"/SingleVehicleView/"  + i.uid}>
-                                <button className="btn btn-danger" onClick={() => actions.getSingleVehicle(i.uid)}>Read more</button>
-                            </Link>
-                            <Link to="">
-                                <button className="btn btn-danger">+</button>
-                            </Link>
-                        </div>
+                <img src={"https://starwars-visualguide.com/assets/img/vehicles/"+ i.uid + ".jpg"} className="card-img-top g-0 m-0 p-0" alt="..." ></img>
+                <div className="card-body ">
+                    <div className="d-flex justify-content-between">
+                        <Link to={"/SingleVehicleView/"  + i.uid}>
+                            <button className="btn btn-danger" >Read more</button>
+                        </Link>
+                        <button className="btn btn-danger" onClick={() => actions.addToFavorites(i.uid, "/SingleVehicleView/" + i.uid, i.name)}>+</button>                       
                     </div>
+                </div>
             </div>            
         </>
         )

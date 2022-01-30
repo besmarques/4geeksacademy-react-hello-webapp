@@ -6,8 +6,12 @@ import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 
 const SinglePlanetView = () => {
     
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
 	const params = useParams();
+
+    useEffect(() => {
+        actions.getSinglePlanet(params.theid)
+    }, []);
 
     return (
     <>
@@ -28,7 +32,7 @@ const SinglePlanetView = () => {
                     <div className="fs-5 ms-5 text-light">Terrain: {store.singlePlanet.terrain}</div>
                     <div className="fs-5 ms-5 text-light">Surface Water{store.singlePlanet.surface_water}</div>
                     <Link to="/">
-                        <button className="fs-5 ms-5 mt-5 text-light btn btn-primary">Home</button>
+                        <button className="fs-5 ms-5 mt-5 text-light btn btn-primary">Return Home</button>
                     </Link>
                 </div>
             </div>
