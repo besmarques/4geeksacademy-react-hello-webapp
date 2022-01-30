@@ -188,10 +188,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 
 				let temp = store.favorites;
+				
+				console.log("i" , i);
 
-				temp.splice(i, 1);
+				//temp.splice(i, 1);
 
-				setStore({favCounter : temp});
+				let testeVar = temp.filter((objecto)=>{
+					return objecto !== i;
+				});
+				
+				console.log("testevar", testeVar)
+				
+				setStore({favorites : testeVar});
 
 			}
 		
