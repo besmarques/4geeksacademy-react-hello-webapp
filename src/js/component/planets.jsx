@@ -19,7 +19,7 @@ const PlanetsSection = props => {
                         <Link to={"/SinglePlanetView/" + i.uid}>
                             <button className="btn btn-primary">Read more</button>
                         </Link>
-                        <button className="btn btn-primary" onClick={() => actions.addToFavorites(i.uid, "/SinglePlanetView/" + i.uid, i.name)}>+</button>                        
+                        <button className="btn btn-primary" onClick={() => actions.addToFavorites(i.uid, "/SinglePlanetView/" + i.uid, i.name)}><i className="far fa-heart" /></button>                        
                     </div>
                 </div>
             </div>

@@ -202,10 +202,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({favorites : testeVar});
 
 			}
-		
-
-
-
 		}
 	};
 

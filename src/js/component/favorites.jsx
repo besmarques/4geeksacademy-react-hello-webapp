@@ -16,7 +16,7 @@ const FavoritesInside = props => {
                     <div className="d-flex justify-content-start">
                         <div className="col-9">
                             <Link to={i.url}>
-                                <button className="btn">{i.name}</button>
+                                <button className="btn" onClick={() => actions.getPerson(i.uid)}>{i.name}</button>
                             </Link>
                         </div>
                         <div className="col-1">

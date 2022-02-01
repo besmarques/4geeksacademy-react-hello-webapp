@@ -9,7 +9,13 @@ const VehicleSection = props => {
 
     const { store, actions } = useContext(Context);
 
-    return store.vehicles.map((i, name, uid, url) => (
+    const [isFavorite, setIsFavorite] = useState(false);
+    
+    const handleToggle = () => {
+        setIsFavorite(!isFavorite);
+    }
+
+        return store.vehicles.map((i, name, uid, url) => (
         <>
             <div className="card col-3 border border-danger bg-dark p-0 mt-3 mb-3 ms-1 me-1">
                 <h5 className="card-title bg-danger text-light p-2 m-0">{i.name}</h5>
@@ -19,7 +25,7 @@ const VehicleSection = props => {
                         <Link to={"/SingleVehicleView/"  + i.uid}>
                             <button className="btn btn-danger" >Read more</button>
                         </Link>
-                        <button className="btn btn-danger" onClick={() => actions.addToFavorites(i.uid, "/SingleVehicleView/" + i.uid, i.name)}>+</button>                       
+                        <button key={i} className="btn btn-danger" onClick={() => actions.addToFavorites(i.uid, "/SingleVehicleView/" + i.uid, i.name), handleToggle}><i className={isFavorite ? "fas fa-heart": "far fa-heart" } /></button>                       
                     </div>
                 </div>
             </div>            

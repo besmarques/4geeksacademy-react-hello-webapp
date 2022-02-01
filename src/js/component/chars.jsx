@@ -19,7 +19,7 @@ const CharSection = props => {
                         <Link to={"/SingleCharacterView/" + i.uid} >
                             <button className="btn btn-warning" >Read more</button>
                         </Link>
-                        <button className="btn btn-warning" onClick={() => actions.addToFavorites(i.uid, "/SingleCharacterView/" + i.uid, i.name)}>+</button>
+                        <button className="btn btn-warning" onClick={() => actions.addToFavorites(i.uid, "/SingleCharacterView/" + i.uid, i.name)}><i className="far fa-heart" /></button>
                     </div>
                 </div>
             </div> 
