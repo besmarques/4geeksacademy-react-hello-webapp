@@ -14,6 +14,7 @@ import SingleCharacterView from "./views/charactersSingle.jsx";
 import SingleVehicleView from "./views/vehicleSingle.jsx";
 import SinglePlanetView from "./views/planetSingle.jsx";
 
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain

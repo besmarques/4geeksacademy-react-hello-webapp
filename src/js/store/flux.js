@@ -172,14 +172,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 
 				let temp = store.favorites;
-
+				
+				//push the data to a temp var
 				temp.push({"uid":uid, "url":url, "name":name})
+				
+				//filter the temp var for duplicates
+				const names = temp.map(o => o.name)
+				const filtered = temp.filter(({name}, index) => !names.includes(name, index + 1))
 
-				setStore({favorites : temp});
-
-				console.log(store.favorites)
-
-				//getActions().addToFavCounter(1);
+				//console.log(filtered);
+				
+				setStore({favorites : filtered});
 
 			},
 			

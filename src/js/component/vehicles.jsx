@@ -25,7 +25,7 @@ const VehicleSection = props => {
                         <Link to={"/SingleVehicleView/"  + i.uid}>
                             <button className="btn btn-danger" >Read more</button>
                         </Link>
-                        <button key={i} className="btn btn-danger" onClick={() => actions.addToFavorites(i.uid, "/SingleVehicleView/" + i.uid, i.name), handleToggle}><i className={isFavorite ? "fas fa-heart": "far fa-heart" } /></button>                       
+                        <button key={i} className="btn btn-danger" onClick={() => actions.addToFavorites(i.uid, "/SingleVehicleView/" + i.uid, i.name), handleToggle}><i className={isFavorite ? "fas fa-heart": "far fa-heart"} /></button>                       
                     </div>
                 </div>
             </div>            
