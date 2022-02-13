@@ -15,8 +15,8 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				
-					<div class="dropdown">
-						<button class="btn dropdown-toggle d-flex" type="button" id="favoritesBtn" data-bs-toggle="dropdown" aria-expanded="false">
+					<div className="dropdown">
+						<button className="btn dropdown-toggle d-flex" type="button" id="favoritesBtn" data-bs-toggle="dropdown" aria-expanded="false">
 							<div className="col-11">Favorites</div><div className="col-1">{store.favorites.length}</div> 
 						</button>
 						<ul className="dropdown-menu col-12" aria-labelledby="favoritesBtn">

@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						//return data;
 						let dataGathered = data.results.map((item,index) => {
-							return {...item,index:index};
+							return {...item,index:index,type:"people",favorite:false};
 						}); 
 
 						setStore({people : dataGathered});
@@ -102,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						//return data;
 						let dataGathered = data.results.map((item,index) => {
-							return {...item,index:index};
+							return {...item,index:index,type:"vehicles",favorite:false};
 						}); 
 
 						setStore({vehicles : dataGathered});
@@ -141,7 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						//return data;
 						let dataGathered = data.results.map((item,index) => {
-							return {...item,index:index};
+							return {...item,index:index,type:"planets",favorite:false};
 						}); 
 
 						setStore({planets : dataGathered});
@@ -168,13 +168,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				   
 			},
 
-			addToFavorites: ( uid, url, name) => {
+			addToFavorites: ( uid, url, name, type, index) => {
 				const store = getStore();
+
+				if(type == "people"){
+					store.people[index].favorite = true;
+					}
+				if(type == "vehicles"){
+					store.vehicles[index].favorite = true;
+				}
+				if(type == "planets"){
+					store.planets[index].favorite = true;
+				}
+				//console.log ("index", index)
+				//console.log ("teste", store.vehicles[index].favorite = true)
+				
+				//console.log("função addtofavorites",store.vehicles.uid)
 
 				let temp = store.favorites;
 				
 				//push the data to a temp var
-				temp.push({"uid":uid, "url":url, "name":name})
+				temp.push({"index":index, "uid":uid, "url":url, "name":name,"type":type, "favorite": true})
 				
 				//filter the temp var for duplicates
 				const names = temp.map(o => o.name)
@@ -189,10 +203,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			removeFromFavorites: (i) => {
 
 				const store = getStore();
+							
+
+				if(i.type == "people"){
+					store.people[i.index].favorite = false;
+					}
+				if(i.type == "vehicles"){
+					store.vehicles[i.index].favorite = false;
+				}
+				if(i.type == "planets"){
+					store.planets[i.index].favorite = false;
+				}
 
 				let temp = store.favorites;
 				
-				console.log("i" , i);
+				console.log(i)
+				
+
+				
+
+				//console.log("i" , i);
 
 				//temp.splice(i, 1);
 
@@ -200,7 +230,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return objecto !== i;
 				});
 				
-				console.log("testevar", testeVar)
+				//console.log("testevar", testeVar)
 				
 				setStore({favorites : testeVar});
 

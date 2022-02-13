@@ -9,9 +9,9 @@ const FavoritesInside = props => {
     
     const { store, actions } = useContext(Context);
     
-    return store.favorites.map((i, name, Url, uid) => (
+    return store.favorites.map((i) => (
         <>
-            <li key={i}>
+            <li key={i.index}>
                 <div className="card">
                     <div className="d-flex justify-content-start">
                         <div className="col-9">
