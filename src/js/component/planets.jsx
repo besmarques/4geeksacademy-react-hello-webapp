@@ -30,7 +30,7 @@ const PlanetsSection = props => {
                                     <button className="btn btn-primary">Read more</button>
                                 </Link>
                                 <button className="btn btn-primary" onClick={() => actions.addToFavorites(i.uid, "/SinglePlanetView/" + i.uid, i.name,i.type,i.index)}>
-                                    <i className="far fa-heart" />
+                                    <i className={heartfav} />
                                 </button>                        
                             </div>
                         </div>
